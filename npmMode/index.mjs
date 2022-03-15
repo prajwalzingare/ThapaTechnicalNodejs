@@ -14,7 +14,7 @@ DISK: ${chalk.yellow("70%")}
 `);
 //in es6 we import validator like this so import it and use it properly.
 import validator from "validator";
-const res = validator.isEmail("prajwal");
+const res = validator.isEmail("prajwal@gmail.com");
 //true hoga to green colour hoga isliye humne chalk ka use karke usko green me print kavaya
 //we use hear conditional operator if email raha to green me true print karega nahi to red me false print karega.
 console.log(res ? chalk.green.inverse(res) : chalk.red.inverse(res));
