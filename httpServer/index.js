@@ -14,7 +14,17 @@
 const http = require("http");
 //the http.createserver() method includes request and response parameters which is supplied by node js
 const server = http.createServer((req, res) => {
-  res.end("hello from the other side");
+  if (req.url == "/") {
+    res.end("hello from the other side");
+  } else if (req.url === "/about") {
+    res.end("hello from the About");
+  } else if (req.url === "/Contact") {
+    res.end("hello from the Contact");
+  } else {
+    res.writeHead(404, { "Content-Type": "text/html" }); //it shows the typw of di=ocument in network tab section.
+    res.end("<h1>404 error pages not found</h1> "); //it print the massage in heading.
+  }
+  // console.log(req.url); //what it print is that it prints in console that how many pages we search my putting / in front of url.
 });
 server.listen(8000, "localhost", () => {
   console.log("listening to the port 8000");
