@@ -12,16 +12,23 @@
 
 //From Thapa technical
 const http = require("http");
+const fs = require("fs");
 //the http.createserver() method includes request and response parameters which is supplied by node js
 const server = http.createServer((req, res) => {
   if (req.url == "/") {
     res.end("hello from the other side");
   } else if (req.url === "/about") {
     res.end("hello from the About");
-  } else if (req.url === "/Contact") {
+  } else if (req.url === "/contact") {
     res.end("hello from the Contact");
+  } else if (req.url === "/userapi") {
+    fs.readFile("./UserApi/userapi.json", "utf-8", (err, data) => {
+      console.log(data);
+      res.end(data);
+    });
+    // res.end("hello from the userapi");
   } else {
-    res.writeHead(404, { "Content-Type": "text/html" }); //it shows the typw of di=ocument in network tab section.
+    res.writeHead(404, { "Content-Type": "text/html" }); //it shows the type of document in network tab section.
     res.end("<h1>404 error pages not found</h1> "); //it print the massage in heading.
   }
   // console.log(req.url); //what it print is that it prints in console that how many pages we search my putting / in front of url.
